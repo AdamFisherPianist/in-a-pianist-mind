@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piano Acoustics – Harmonics & Sound</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+      color: #333;
+    }
+    header {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+    }
+    nav {
+      background-color: #e0e7ff;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      color: #1e3a8a;
+    }
+    figure {
+      text-align: center;
+      margin: 20px 0;
+    }
+    figcaption {
+      font-size: 0.9em;
+      color: #555;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Acoustics & Harmonics</h1>
+    <p>The Physics Behind a Single Piano Note</p>
+  </header>
+
+ <nav>
+    <a href="index.html">Home</a> |
+    <a href="acoustics.html">Acoustics</a> |
+    <a href="struck.html">Struck</a> |
+    <a href="plucked.html">Plucked</a> |
+    <a href="about.html">About Me</a>
+  </nav>
+
+  <main>
+<section>
+  <h2>What Makes a Piano Sound Like a Piano?</h2>
+  <p>
+    Every piano note you hear is more than just a single frequency. When a hammer strikes a string, it creates a fundamental pitch, but also a rich blend of additional frequencies called harmonics. These harmonics shape the tone, warmth, and character of the sound.
+  </p>
+  <p>
+    Without harmonics, a piano would sound dull or synthetic. With them, each note becomes full and expressive. This harmonic mix is what separates a piano from a pure sine wave or digital beep.
+  </p>
+</section>
+<section>
+  <h2>Watch the String Vibrate</h2>
+  <p>
+    This animated waveform shows how a real piano string vibrates. The shape is created by mixing the fundamental note with several harmonics. Each bump and wave reflects the rich sound we hear from an actual piano.
+  </p>
+  <figure>
+    <img src="piano-vibration.gif" alt="Piano string harmonic vibration animation" width="70%" />
+    <figcaption>Figure 4: Animation of simulated piano string motion (A2 with 6 harmonics).</figcaption>
+  </figure>
+</section>
+<section>
+  <h2>Pure Tone vs Piano Note</h2>
+  <p>
+    A pure sine wave (top) is simple and smooth — it only contains one frequency. A real piano note (bottom), however, includes many harmonics that shape its sound. This is what makes music rich and expressive.
+  </p>
+  <figure>
+    <img src="sine_vs_piano.gif" alt="Comparison of sine wave and piano harmonic wave" width="70%">
+    <figcaption>Figure 5: Animation comparing a pure tone (top) to a piano note (bottom).</figcaption>
+  </figure>
+</section>
+    <section>
+      <h2>What Are Harmonics?</h2>
+      <p>
+        When you play a piano note, you're not just hearing one sound. You're hearing a stack of frequencies called harmonics, or overtones. The first harmonic is the note you played — the "fundamental" — but every higher harmonic contributes to the timbre, or color, of the sound.
+      </p>
+      <figure>
+        <!-- Embed harmonic ladder image or graph -->
+        <img src="harmonic-ladder.png" alt="Harmonic Series" width="70%" />
+        <figcaption>Figure 1: Frequencies in the harmonic series of A2 (110 Hz)</figcaption>
+      </figure>
+    </section>
+
+<section>
+  <h2>Listen to A2</h2>
+  <p>
+    This is the sound of a real A2 note on the piano. Try to listen closely — you may be able to hear not only the main pitch, but the subtle ringing of higher harmonics.
+  </p>
+  <audio controls>
+    <source src="A2.wav" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</section>
+
+    <section>
+      <h2>Spectrum Analysis</h2>
+      <p>
+        Using a spectrum analyzer, we can break the sound down into its components. Here's what the frequencies of a real A2 note look like.
+      </p>
+      <figure>
+        <!-- Embed screenshot of spectrum -->
+        <img src="piano-spectrum.png" alt="Spectrum Analysis of A2" width="80%" />
+        <figcaption>Figure 2: Peaks show the harmonics present in the sound.</figcaption>
+      </figure>
+    </section>
+
+   
+  
+  </main>
+
+  <footer>
+    Created by Adam Erkouni El Idrissi · Last updated July 2025
+  </footer>
+
+</body>
+</html>

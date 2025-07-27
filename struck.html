@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Struck Strings – Piano Acoustics</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+
+    body {
+      font-family: "Georgia", serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      background: #fefefe;
+      color: #222;
+    }
+    header {
+      background: #1e3a8a;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+    nav {
+      background: #dbeafe;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      max-width: 850px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h2 {
+      color: #1e3a8a;
+      margin-top: 40px;
+    }
+    pre {
+      background: #f3f3f3;
+      padding: 10px;
+      font-family: monospace;
+      overflow-x: auto;
+    }
+    figure {
+      text-align: center;
+      margin: 30px 0;
+    }
+    figcaption {
+      font-size: 0.9em;
+      color: #555;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 0.9em;
+      color: #777;
+    }
+.section-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.section-flex img {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.section-flex .text {
+  flex: 1;
+  min-width: 250px;
+}
+.string-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.string-text {
+  flex: 1 1 60%;
+  min-width: 280px;
+}
+
+.string-img {
+  flex: 1 1 35%;
+  min-width: 200px;
+  text-align: center;
+}
+
+.string-img img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.wrapped-img-container {
+  overflow: hidden;
+}
+
+.wrapped-img {
+  float: right;
+  margin: 10px 0 15px 20px;
+  width: 350px;
+  max-width: 55%;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Struck Strings</h1>
+  <p>Modeling the Physics of Piano Sound</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a> |
+  <a href="acoustics.html">Acoustics</a> |
+  <a href="struck.html">Struck</a> |
+  <a href="plucked.html">Plucked</a> |
+  <a href="about.html">About Me</a>
+</nav>
+
+<main>
+
+<h2>Introduction</h2>
+<div class="section-flex">
+  <div class="text">
+    <p>
+      When a player presses a piano key, a felt-covered hammer is launched toward the string. This action — fast, precise, and beautifully mechanical — produces the piano's sound. The hammer, made of compressed wool felt, behaves like a nonlinear spring during the strike.
+    </p>
+    <p>
+      Researchers have studied this complex interaction between hammer and string using theory, experiments, and computer simulations. On this page, we take a simplified but powerful approach using the <a href="https://en.wikipedia.org/wiki/Fourier_series">Fourier Series</a> and initial conditions to explain the physics of the struck string.
+    </p>
+  </div>
+  <img src="piano-action.gif" alt="Piano action mechanism">
+</div>
+<section>
+  <h2>Struck vs. Plucked Strings: Boundary and Initial Conditions</h2>
+
+  <div class="wrapped-img-container">
+    <img src="string-standing-2.gif" alt="Mode Shapes of String" class="wrapped-img" />
+    <p>
+      The problem of the <strong>struck string</strong> is very similar to the problem of the 
+      <a href="plucked.html"><strong>Plucked String</strong></a>, in that there are two types of conditions which must be considered. 
+      The <strong>Boundary Conditions</strong> (i.e. the values of displacement, velocity, and force at the ends of the string) 
+      determine the possible allowed mode shapes with which the string may vibrate at one of its natural frequencies. 
+      The <strong>Initial Conditions</strong> (the initial displacement and velocity of the entire string at time <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>t</mi>
+  <mo>=</mo>
+  <mn>0</mn>
+</math>
+      determine which of the possible allowed modes actually participate in the ensuing motion, and with what amplitudes.
+    </p>
+
+    <p>
+      For a string which is fixed at both ends, the boundary conditions at each end require that the displacement of the string 
+      must always be zero. This results in mode shapes for which the transverse displacement at any point along the string 
+      depends on a sine function:
+    </p>
+
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>sin</mi>
+  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+  <mrow data-mjx-texclass="ORD">
+    <mo minsize="1.623em" maxsize="1.623em">(</mo>
+  </mrow>
+  <mfrac>
+    <mrow>
+      <mi>n</mi>
+      <mi>&#x3C0;</mi>
+    </mrow>
+    <mi>L</mi>
+  </mfrac>
+  <mi>x</mi>
+  <mrow data-mjx-texclass="ORD">
+    <mo minsize="1.623em" maxsize="1.623em">)</mo>
+  </mrow>
+  <mtext>&#xA0;</mtext>
+  <mo>,</mo>
+</math>
+    <p>
+      where <strong>L</strong> is the length of the string, and <strong>n</strong> is an integer. 
+      The animation at right shows the first four allowed mode shapes for a fixed-fixed string. 
+      The number of "humps" (antinodes) corresponds to the value of n.
+      After applying the boundary conditions, the complete expression for the transverse displacement of the string, 
+      as a function of time and position along the string’s length, is:
+    </p>
+
+   <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mi>y</mi>
+  <mo stretchy="false">(</mo>
+  <mi>x</mi>
+  <mo>,</mo>
+  <mi>t</mi>
+  <mo stretchy="false">)</mo>
+  <mo>=</mo>
+  <munderover>
+    <mo data-mjx-texclass="OP">&#x2211;</mo>
+    <mrow data-mjx-texclass="ORD">
+      <mi>n</mi>
+      <mo>=</mo>
+      <mn>1</mn>
+    </mrow>
+    <mi>N</mi>
+  </munderover>
+  <mrow data-mjx-texclass="ORD">
+    <mo minsize="1.2em" maxsize="1.2em">[</mo>
+  </mrow>
+  <msub>
+    <mi>A</mi>
+    <mi>n</mi>
+  </msub>
+  <mi>cos</mi>
+  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+  <mo stretchy="false">(</mo>
+  <msub>
+    <mi>&#x3C9;</mi>
+    <mi>n</mi>
+  </msub>
+  <mi>t</mi>
+  <mo stretchy="false">)</mo>
+  <mo>+</mo>
+  <msub>
+    <mi>B</mi>
+    <mi>n</mi>
+  </msub>
+  <mi>sin</mi>
+  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+  <mo stretchy="false">(</mo>
+  <msub>
+    <mi>&#x3C9;</mi>
+    <mi>n</mi>
+  </msub>
+  <mi>t</mi>
+  <mo stretchy="false">)</mo>
+  <mrow data-mjx-texclass="ORD">
+    <mo minsize="1.2em" maxsize="1.2em">]</mo>
+  </mrow>
+  <mi>sin</mi>
+  <mo data-mjx-texclass="NONE">&#x2061;</mo>
+  <mrow data-mjx-texclass="ORD">
+    <mo minsize="1.623em" maxsize="1.623em">(</mo>
+  </mrow>
+  <mfrac>
+    <mrow>
+      <mi>n</mi>
+      <mi>&#x3C0;</mi>
+    </mrow>
+    <mi>L</mi>
+  </mfrac>
+  <mi>x</mi>
+  <mrow data-mjx-texclass="ORD">
+    <mo minsize="1.623em" maxsize="1.623em">)</mo>
+  </mrow>
+</math>
+    <p>
+      where <strong>ωₙ</strong> is the natural frequency of the nth mode, and the coefficients 
+      <strong>Aₙ</strong> and <strong>Bₙ</strong> are determined from the initial displacement and velocity of the string. 
+      The string has a linear density ρ<sub>L</sub> [kg/m] and is stretched to a tension <strong>T</strong>; 
+      transverse waves travel along the string with a speed <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>c</mi>
+  <mo>=</mo>
+  <msqrt>
+    <mi>T</mi>
+    <mrow data-mjx-texclass="ORD">
+      <mo>/</mo>
+    </mrow>
+    <msub>
+      <mi>&#x3C1;</mi>
+      <mi>L</mi>
+    </msub>
+  </msqrt>
+</math>.
+      The natural frequencies corresponding to the allowed mode shapes depend on the wave speed and the string length:
+    </p>
+
+   <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mi>&#x3C9;</mi>
+    <mi>n</mi>
+  </msub>
+  <mo>=</mo>
+  <mn>2</mn>
+  <mi>&#x3C0;</mi>
+  <mstyle scriptlevel="0">
+    <mspace width="0.167em"></mspace>
+  </mstyle>
+  <mfrac>
+    <mrow>
+      <mi>n</mi>
+      <mi>c</mi>
+    </mrow>
+    <mrow>
+      <mn>2</mn>
+      <mi>L</mi>
+    </mrow>
+  </mfrac>
+  <mtext>&#xA0;</mtext>
+  <mo>.</mo>
+</math>
+
+    <p>
+      The natural frequencies will be higher if the string is shorter, or if the tension is higher, 
+      or if the density is lower. The natural (or allowed) frequencies are integer multiples of the fundamental 
+      (n = 1) frequency.
+    </p>
+  </div>
+</section>
+
+
+
+  <h2>The Conditions</h2>
+  <p>
+    A string fixed at both ends supports standing waves. The solution to the wave equation for such a string is:
+  </p>
+  <pre>
+y(x, t) = Σ Aₙ sin(nπx / L) cos(nπvt / L)
+  </pre>
+  <p>
+    where:
+    <ul>
+      <li><strong>L</strong> is the length of the string</li>
+      <li><strong>v</strong> is the wave velocity on the string</li>
+      <li><strong>n</strong> is the harmonic number (1, 2, 3, ...)</li>
+      <li><strong>Aₙ</strong> is the amplitude of the n-th mode</li>
+    </ul>
+  </p>
+
+  <h2>Striking vs. Plucking</h2>
+  <p>
+    In plucked strings (like a guitar), the string starts with an initial displacement but zero velocity. In contrast, a struck string begins with an initial velocity and zero displacement.
+  </p>
+
+  <h2>Initial Velocity Condition</h2>
+  <p>
+    Suppose a piano hammer strikes at position \( x = x_0 \), over a small region \( \Delta x \), with constant velocity \( v_0 \). Then the initial velocity function is:
+  </p>
+  <pre>
+∂y/∂t (x, 0) = 
+  v₀   for x₀ - Δx/2 ≤ x ≤ x₀ + Δx/2
+  0    otherwise
+  </pre>
+
+  <p>The Fourier coefficients are calculated as:</p>
+  <pre>
+Aₙ = (2v₀L / nπv) * sin(nπx₀ / L) * sin(nπΔx / 2L) / (nπΔx / 2L)
+  </pre>
+
+  <p>
+    This tells us how much of each harmonic is present. Notice how all harmonics can be excited — both even and odd — depending on where and how the string is struck.
+  </p>
+
+  <h2>Mode Shapes and Harmonic Content</h2>
+  <p>
+    Below is a diagram of the first few standing wave modes (n = 1, 2, 3...) of a vibrating string. These combine linearly to form the total vibration.
+  </p>
+
+  <figure>
+    <img src="mode-shapes-placeholder.png" alt="Mode Shapes" width="100%" />
+    <figcaption>Mode shapes for the first few harmonics of a string.</figcaption>
+  </figure>
+
+  <p>
+    In a real piano, the hammer doesn’t strike exactly in the middle — typically around 1/7 of the string length. This avoids exciting only odd harmonics (as a center strike would).
+  </p>
+
+  <h2>Time-Domain Vibration</h2>
+  <p>
+    Here's a simulation of a waveform built from the first six harmonics of A2, assuming a struck-string distribution:
+  </p>
+
+  <figure>
+    <img src="piano-vibration-waveform.png" alt="Struck string waveform" width="100%" />
+    <figcaption>Waveform built from A2 + its first harmonics (struck configuration).</figcaption>
+  </figure>
+
+  <h2>Spectrum</h2>
+  <p>
+    The frequency domain view shows distinct peaks at the fundamental and overtones. All harmonics are present and gradually decrease in amplitude.
+  </p>
+
+  <figure>
+    <img src="piano-spectrum.png" alt="Frequency spectrum" width="100%" />
+    <figcaption>Spectrum of a struck A2 string: fundamental + overtones.</figcaption>
+  </figure>
+
+  <h2>Conclusion</h2>
+  <p>
+    The physics of struck strings shows how energy delivery changes everything. Unlike bowed or plucked instruments, the piano's hammer activates a unique blend of harmonics, giving it its distinctive sound. By modeling the strike with a velocity function and solving the Fourier series, we can predict the sound — or even design it.
+  </p>
+
+</main>
+
+<footer>
+  Created by Adam Erkouni El Idrissi · Based on acoustic modeling resources by D. Russell, Penn State
+</footer>
+
+</body>
+</html>
