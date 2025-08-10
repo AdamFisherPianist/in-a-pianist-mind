@@ -122,6 +122,44 @@
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+.formula-block {
+  background: #f9f9f9;
+  padding: 14px 18px;
+  border-left: 4px solid #ccc;
+  font-size: 17px;
+  margin: 25px 0;
+}
+
+.img-inline {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.image-row {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.image-row img {
+  flex: 1 1 45%;
+  max-width: 48%;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 768px) {
+  .image-row img {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
 
   </style>
 </head>
@@ -130,7 +168,7 @@
 <header>
   <h1>Struck Strings</h1>
   <p>Modeling the Physics of Piano Sound</p>
-  <p>By <a  href="about.html">Adam Erkouni El idrissi</a></p>
+<p>By <a  href="about.html">Adam Erkouni El idrissi</a></p>
 </header>
 
 <nav>
@@ -138,7 +176,8 @@
   <a href="acoustics.html">Acoustics</a> |
   <a href="struck.html">Struck</a> |
   <a href="plucked.html">Plucked</a> |
-  <a href="about.html">About Me</a>
+  <a href="about.html">About Me</a> |  
+<a href="path/to/Hammer.html" target="_blank" rel="noopener noreferrer">NEW! Nonlinear Piano Hammer</a>
 </nav>
 
 <main>
@@ -161,22 +200,21 @@
   <div class="wrapped-img-container">
     <img src="string-standing-2.gif" alt="Mode Shapes of String" class="wrapped-img" />
     <p>
-      The problem of the <strong>struck string</strong> is very similar to the problem of the 
-      <a href="plucked.html"><strong>Plucked String</strong></a>, in that there are two types of conditions which must be considered. 
-      The <strong>Boundary Conditions</strong> (i.e. the values of displacement, velocity, and force at the ends of the string) 
-      determine the possible allowed mode shapes with which the string may vibrate at one of its natural frequencies. 
-      The <strong>Initial Conditions</strong> (the initial displacement and velocity of the entire string at time <math xmlns="http://www.w3.org/1998/Math/MathML">
+     The problem of the <strong>struck string</strong> is rather similar to that of the <a href="plucked.html"><strong>Plucked String</strong></a>, insofar 
+as there are two types of conditions which must be considered. The <strong>Boundary Conditions</strong> (i.e. the displacement, velocity, and force values at the string ends) determine 
+the possible permitted mode shapes with which the string may vibrate at one of its natural frequencies. The <strong>Initial Conditions</strong> (the initial displacement and velocity 
+of the entire string at time <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>t</mi>
   <mo>=</mo>
   <mn>0</mn>
 </math>
-      determine which of the possible allowed modes actually participate in the ensuing motion, and with what amplitudes.
+      determine which of the possible allowed modes actually contribute to the resulting motion, and with what amplitudes.
     </p>
 
     <p>
-      For a string which is fixed at both ends, the boundary conditions at each end require that the displacement of the string 
-      must always be zero. This results in mode shapes for which the transverse displacement at any point along the string 
-      depends on a sine function:
+      For a string fixed at both ends, the boundary conditions at both ends require that the displacement 
+of the string should always equal zero. This results in mode shapes where 
+the transverse displacement of the string at any location on the string has been a function of a sine function:
     </p>
 
     <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -200,11 +238,10 @@
   <mo>,</mo>
 </math>
     <p>
-      where <strong>L</strong> is the length of the string, and <strong>n</strong> is an integer. 
-      The animation at right shows the first four allowed mode shapes for a fixed-fixed string. 
-      The number of "humps" (antinodes) corresponds to the value of n.
-      After applying the boundary conditions, the complete expression for the transverse displacement of the string, 
-      as a function of time and position along the string’s length, is:
+      where <strong>n</strong> is an integer and <strong>L</strong> is the length of the string. 
+Animation at right shows the first four allowed mode shapes for a fixed-fixed string. The number 
+of "humps" or antinodes is n. In setting the boundary conditions, the complete equation 
+for the transverse string displacement, as a function of time and position along the string length, is:
     </p>
 
    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -275,10 +312,10 @@
   </mrow>
 </math>
     <p>
-      where <strong>ωₙ</strong> is the natural frequency of the nth mode, and the coefficients 
-      <strong>Aₙ</strong> and <strong>Bₙ</strong> are determined from the initial displacement and velocity of the string. 
-      The string has a linear density ρ<sub>L</sub> [kg/m] and is stretched to a tension <strong>T</strong>; 
-      transverse waves travel along the string with a speed <math xmlns="http://www.w3.org/1998/Math/MathML">
+     where <strong>ωₙ</strong> is the natural frequency of the nth mode, and the coefficients <strong>Aₙ </strong> 
+and <strong>Bₙ </strong> are determined from the initial displacement and velocity of the string. The string 
+has a linear density ρ<sub>L</sub> [kg/m] and is stretched to tension <strong>T</strong>; transverse waves 
+travel along the string with a speed <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>c</mi>
   <mo>=</mo>
   <msqrt>
@@ -292,7 +329,7 @@
     </msub>
   </msqrt>
 </math>.
-      The natural frequencies corresponding to the allowed mode shapes depend on the wave speed and the string length:
+     The natural frequencies of the permitted mode shapes vary with the string length and speed of the wave:
     </p>
 
    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
@@ -322,7 +359,7 @@
 
     <p>
       The natural frequencies will be higher if the string is shorter, or if the tension is higher, 
-      or if the density is lower. The natural (or allowed) frequencies are integer multiples of the fundamental 
+      or if the density is lower. The natural (or permitted) frequencies are integer multiples of the fundamental 
       (n = 1) frequency.
     </p>
   </div>
@@ -330,45 +367,68 @@
 
 
 
-  <h2>The Conditions</h2>
+  <section>
+  <h2>Initial Conditions for the Struck String</h2>
+
   <p>
-    A string fixed at both ends supports standing waves. The solution to the wave equation for such a string is:
+    The actual interaction between the piano hammer and string is a complex one, but we can get a useful approximation by assuming the string starts at rest, and a short segment is given an initial velocity. The Fourier Coefficients \( A_n \) and \( B_n \) describe how different vibrational modes contribute to the motion. They are derived from the string’s initial displacement \( y(x,0) \) and velocity \( u(x,0) \):
   </p>
-  <pre>
-y(x, t) = Σ Aₙ sin(nπx / L) cos(nπvt / L)
-  </pre>
+
+  <div class="formula-block">
+    \[
+    A_n = \frac{2}{L} \int_0^L y(x,0) \sin\left( \frac{n \pi x}{L} \right) dx, \quad 
+    B_n = \frac{2}{\omega_n L} \int_0^L u(x,0) \sin\left( \frac{n \pi x}{L} \right) dx
+    \]
+  </div>
+
   <p>
-    where:
-    <ul>
-      <li><strong>L</strong> is the length of the string</li>
-      <li><strong>v</strong> is the wave velocity on the string</li>
-      <li><strong>n</strong> is the harmonic number (1, 2, 3, ...)</li>
-      <li><strong>Aₙ</strong> is the amplitude of the n-th mode</li>
-    </ul>
+    Since the struck string is initially at rest at equilibrium, all of the \( A_n \) terms are zero. The \( B_n \) coefficients depend on the velocity profile imparted by the hammer.
   </p>
+
+  <img src="initial-velocity-1.jpg" alt="Impulse region diagram" class="img-inline" />
+
+  <blockquote>
+    As a first approximation, let’s assume a uniform velocity \( v_0 \) is applied between \( \alpha_1 L \) and \( \alpha_2 L \), and zero elsewhere. This leads to:
+  </blockquote>
+
+  <div class="formula-block">
+    \[
+    B_n = \frac{2 v_0 L}{c (\pi n)^2} \left( \cos(\alpha_1 \pi n) - \cos(\alpha_2 \pi n) \right)
+    \]
+  </div>
+
+  <p>
+    The full displacement of the string over time can then be expressed as:
+  </p>
+
+  <div class="formula-block">
+    \[
+    y(x,t) = \sum_{n=1}^{N} B_n \sin\left( \frac{n \pi x}{L} \right) \sin\left( \frac{2 \pi n c}{2L} t \right)
+    \]
+  </div>
+
+  <div class="image-row">
+    <img src="struck-build-1.gif" alt="Five-term Fourier approximation" />
+
+    <img src="velocity-profile-2.gif" alt="Fifty-six-term Fourier approximation" />
+<figcaption>Animations:<a href="https://www.acs.psu.edu/drussell/demos.html">Dan Russel</a></figcaption>
+  </div>
+
+  <p>
+    The plots above show how a Fourier sum of a few sine waves can already model string behavior right after the hammer strike. A more realistic model uses a half-sine-shaped initial velocity. Though analytically harder to solve, it produces sharper pulses.
+  </p>
+
+  <img src="struck-build-2.gif" alt="Fourier buildup animation" class="img-inline" />
+
+  <p>
+    It’s remarkable how a sum of sine waves with the right amplitude and frequency can reconstruct such rich physical behavior. This is the core of how musical acoustics connects mathematics, physics, and sound.
+  </p>
+</section>
+
 
   <h2>Striking vs. Plucking</h2>
   <p>
     In plucked strings (like a guitar), the string starts with an initial displacement but zero velocity. In contrast, a struck string begins with an initial velocity and zero displacement.
-  </p>
-
-  <h2>Initial Velocity Condition</h2>
-  <p>
-    Suppose a piano hammer strikes at position \( x = x_0 \), over a small region \( \Delta x \), with constant velocity \( v_0 \). Then the initial velocity function is:
-  </p>
-  <pre>
-∂y/∂t (x, 0) = 
-  v₀   for x₀ - Δx/2 ≤ x ≤ x₀ + Δx/2
-  0    otherwise
-  </pre>
-
-  <p>The Fourier coefficients are calculated as:</p>
-  <pre>
-Aₙ = (2v₀L / nπv) * sin(nπx₀ / L) * sin(nπΔx / 2L) / (nπΔx / 2L)
-  </pre>
-
-  <p>
-    This tells us how much of each harmonic is present. Notice how all harmonics can be excited — both even and odd — depending on where and how the string is struck.
   </p>
 
   <h2>Mode Shapes and Harmonic Content</h2>
@@ -377,8 +437,9 @@ Aₙ = (2v₀L / nπv) * sin(nπx₀ / L) * sin(nπΔx / 2L) / (nπΔx / 2L)
   </p>
 
   <figure>
-    <img src="mode-shapes-placeholder.png" alt="Mode Shapes" width="100%" />
-    <figcaption>Mode shapes for the first few harmonics of a string.</figcaption>
+    <img src="mode-shapes-placeholder.png" alt="Mode Shapes" width="60%" />
+    <figcaption><a href="https://www.physicsbootcamp.org/normal-modes-of-a-string.html">Source: physicsbootcamp</a>
+Mode shapes for the first few harmonics of a string.</figcaption>
   </figure>
 
   <p>
@@ -414,7 +475,7 @@ Aₙ = (2v₀L / nπv) * sin(nπx₀ / L) * sin(nπΔx / 2L) / (nπΔx / 2L)
 
 <footer>
   Created by Adam Erkouni El Idrissi · Based on acoustic modeling resources by D. Russell
+</footer>
 
 </body>
 </html>
-
